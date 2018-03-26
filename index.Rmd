@@ -48,7 +48,7 @@ theme(axis.text.x = element_text(size=18),
       
 ```
 
-* This is an example of a background spectrum. You can see it has dips all over the place. This come about through contamination of the spectrometer optics and atmospheric gases, e.g. carbon dioxide at ~2300 /cm.
+* This is an example of a background spectrum. You can see it has dips all over the place. This comes about through contamination of the spectrometer optics and atmospheric gases, e.g. carbon dioxide at ~2300 /cm.
 
 ---
 ## Example Sample Spectrum Overlay
