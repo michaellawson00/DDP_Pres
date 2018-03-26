@@ -1,67 +1,159 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
   <title>Developing Data Products Reproducible Pitch</title>
-  <meta name="description" content="">
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products Reproducible Pitch">
   <meta name="author" content="Michael Lawson">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
-  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/default.css" id="theme">
-  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" id="theme">
-  <!--[if lt IE 9]>
-  <script src="lib/js/html5shiv.js"></script>
-  <![endif]-->  <link rel="stylesheet" href = "assets/css/ribbons.css">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
 
 </head>
-<body>
-  <div class="reveal">
-    <div class="slides">
-      <section class='' data-state='' id='slide-1'>
-  <h2>Introduction</h2>
-  <ul>
-<li>All molecules vibrate and rotate at characteristic frequencies.</li>
-<li>Sometimes, light with the same frequency as the molecular vibration can interact with the molecule. This generally happens in the infrared part of the EM spectrum.</li>
-<li>If light is absorbed at a given frequency.</li>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products Reproducible Pitch</h1>
+    <h2>Transmission Spectrum Viewer</h2>
+    <p>Michael Lawson<br/>R&amp;D Scientist</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Under certain circumstances, photons can interact with molecules. You can think of the molecule as being an antenna, capable of soaking up incoming EM energy. We can distinguish chemicals by shining light on them and checking to see if characteristic light frequencies are attenuated.</li>
+<li>If we record light flux as a function of light frequency we have what is called a &quot;spectrum&quot;. The study of the interaction of light with matter is called &quot;spectroscopy&quot;.</li>
+<li>When examining a spectrum, it is important to consider it is not only the chemical of interest that can attenuate the light. Variations in source intensity, for example, can overlay the desired signal.</li>
+<li>To overcome these difficulties, it is common to normalize a spectrum by recording a &quot;background&quot; spectrum, where no sample is present, as well as a sample spectrum. The sample transmission spectrum is created by dividing the sample spectrum by the background spectrum.</li>
+<li>The data product developed for this project attempts to make the process of visualizing a transmission spectrum, from two arbitrary spectra, more easily accomplished.</li>
 </ul>
 
-</section>
-<section class='' data-state='' id='slide-2'>
-  <h2>Slide 2</h2>
-  
-</section>
-    </div>
-  </div>
-</body>
-  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
-  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
-  <script>
-  // Full list of configuration options available here:
-  // https://github.com/hakimel/reveal.js#configuration
-  Reveal.initialize({
-    controls: true,
-    progress: true,
-    history: true,
-    center: true,
-    theme: Reveal.getQueryHash().theme || 'default', 
-    transition: Reveal.getQueryHash().transition || 'default', 
-    dependencies: [
-    // Cross-browser shim that fully implements classList -
-    // https://github.com/eligrey/classList.js/
-      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
-      // Zoom in and out with Alt+click
-      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-      // Speaker notes
-      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-      // Remote control your reveal.js presentation using a touch device
-      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-      ]
-  });
-  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
-<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<!-- DONE LOADING HIGHLIGHTER JS FILES -->
- 
+  </article>
+  <!-- Presenter Notes -->
+</slide>
 
-</html>
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Example Background Spectrum</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"></p>
+
+<ul>
+<li>This is an example of a background spectrum. You can see it has dips all over the place. This come about through contamination of the spectrometer optics and atmospheric gases, e.g. carbon dioxide at ~2300 /cm.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Example Sample Spectrum Overlay</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"></p>
+
+<p>Here I&#39;ve overplayed a sample spectrum onto the background spectrum I showed earlier. Note that most of the dips are the same, but some are not. The extra dips come from the sample.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Transmission Spectrum</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="figure/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"></p>
+
+<p>Dividing the sample spectrum by the background spectrum gives the transmission spectrum. This normalises the spectrum so that only the sample absorbances are shown, in turn making it easier to quantify the sample.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Example Background Spectrum'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Example Sample Spectrum Overlay'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Transmission Spectrum'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -4,10 +4,10 @@ title       : Developing Data Products Reproducible Pitch
 subtitle    : Transmission Spectrum Viewer
 author      : Michael Lawson
 job         : R&D Scientist
-framework   : revealjs        # {io2012, html5slides, shower, dzslides, ...}
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
-widgets     : []            # {mathjax, quiz, bootstrap}
+widgets     : [mathjax]            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 
@@ -15,16 +15,94 @@ knit        : slidify::knit2slides
 
 ## Introduction
 
-* All molecules vibrate and rotate at characteristic frequencies.
-* Sometimes, light with the same frequency as the molecular vibration can interact with the molecule. This generally happens in the infrared part of the EM spectrum.
-* If light is absorbed at a given frequency.
+
+* Under certain circumstances, photons can interact with molecules. You can think of the molecule as being an antenna, capable of soaking up incoming EM energy. We can distinguish chemicals by shining light on them and checking to see if characteristic light frequencies are attenuated.
+* If we record light flux as a function of light frequency we have what is called a "spectrum". The study of the interaction of light with matter is called "spectroscopy".
+* When examining a spectrum, it is important to consider it is not only the chemical of interest that can attenuate the light. Variations in source intensity, for example, can overlay the desired signal.
+* To overcome these difficulties, it is common to normalize a spectrum by recording a "background" spectrum, where no sample is present, as well as a sample spectrum. The sample transmission spectrum is created by dividing the sample spectrum by the background spectrum.
+* The data product developed for this project attempts to make the process of visualizing a transmission spectrum, from two arbitrary spectra, more easily accomplished.
 
 
-
-
+```{r, echo=FALSE}
+library(ggplot2)
+library(tidyr)
+Background <- read.csv("Spectrum2.csv")
+Sample <- read.csv("Spectrum3.csv")
+```
 --- 
 
-## Slide 2
+## Example Background Spectrum
+
+```{r echo=FALSE, warning=FALSE, fig.width=12.5,fig.height=6}
+
+ggplot(Background, aes(x=Wavenumber, y=Intensity)) +
+geom_line() + 
+xlab(expression(paste("Wavenumber (", cm^-1, ")"))) +
+ylab("Intensity (Arb)") +
+#ggtitle("Example Background Spectrum") +
+xlim(700, 3600) + 
+theme_light() + 
+theme(axis.text.x = element_text(size=18),
+        axis.text.y = element_text(size=18),
+      title=element_text(size=22))
+      
+```
+
+* This is an example of a background spectrum. You can see it has dips all over the place. This come about through contamination of the spectrometer optics and atmospheric gases, e.g. carbon dioxide at ~2300 /cm.
+
+---
+## Example Sample Spectrum Overlay
+
+```{r echo=FALSE, warning=FALSE, fig.width=12.5,fig.height=6}
+
+
+data <- data.frame(x = Background$Wavenumber, 
+                   Background = Background$Intensity, 
+                   Sample = Sample$Intensity)
+
+data %>%
+  gather(key, value, Background, Sample) %>%
+  ggplot(aes(x=x, y=value, colour=key)) +
+  geom_line() + 
+  xlab(expression(paste("Wavenumber (", cm^-1, ")"))) +
+  ylab("Intensity (Arb)") +
+  #ggtitle("Example Background Spectrum") +
+  xlim(700, 3600) + 
+  theme_light() + 
+  theme(axis.text.x = element_text(size=18),
+          axis.text.y = element_text(size=18),
+        legend.text=element_text(size=15),
+        title=element_text(size=22),
+        legend.position = c(0.86, 0.85),
+        legend.title = element_blank())
+
+```
+
+Here I've overplayed a sample spectrum onto the background spectrum I showed earlier. Note that most of the dips are the same, but some are not. The extra dips come from the sample.
+
+---
+
+## Transmission Spectrum
+
+```{r echo=FALSE, warning=FALSE, fig.width=12.5,fig.height=6}
+
+ggplot(data, aes(x=x, y=Sample*100/Background)) +
+geom_line() + 
+xlab(expression(paste("Wavenumber (", cm^-1, ")"))) +
+ylab("Transmission (%)") +
+#ggtitle("Example Background Spectrum") +
+xlim(700, 3600) + 
+ylim(0, 120) + 
+theme_light() + 
+theme(axis.text.x = element_text(size=18),
+        axis.text.y = element_text(size=18),
+      title=element_text(size=22))
+      
+```
+
+Dividing the sample spectrum by the background spectrum gives the transmission spectrum. This normalises the spectrum so that only the sample absorbances are shown, in turn making it easier to quantify the sample.
+
+
 
 
 
